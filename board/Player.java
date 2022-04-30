@@ -5,6 +5,7 @@ public class Player {
 	private String name;
 	public int health;
 	//hand? don't know if the user should have the whole deck or just have the cards they chose
+	//field this is the area where the user can place the cards
 	
 	public Player(String name,int health)
 	{
