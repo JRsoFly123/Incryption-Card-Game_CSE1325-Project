@@ -35,10 +35,10 @@ public class Hand
 		}
 	}
 	
-	//we also need to remove the add right after since it will be placed
+	//we also need to remove the card right after since it will be placed
 	public void removeCardFromHand(Card card)
 	{
-		for(int i=0;i<cardsInHand.size();i++)
+		for(int i=0;i<cardsInHand.size();i++)//doubt we need this since we know which cards are in the hand
 		{
 			if(cardsInHand.get(i)==card)
 			{
