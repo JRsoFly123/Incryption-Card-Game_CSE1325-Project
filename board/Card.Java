@@ -1,4 +1,4 @@
-package cardgame;
+package board;
 
 import javax.swing.*;
 
