@@ -38,7 +38,7 @@ public class Field
 			cards.add(card);
 		}
 	}
-	
+	// this is when the card's hp is 0
 	public void removeCard(UnitCard card)
 	{
 		cards.remove(card);
