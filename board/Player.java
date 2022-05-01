@@ -61,7 +61,8 @@ public class Player {
 	{
 		opponentCard.health=opponentCard.health-(card.getAttack());//getPower gets the cards attack
 		
-		if(opponentCard.health==0)
+		//will be taken off the field if health is 0 or lower
+		if(opponentCard.health<=0)
 		{
 			opponent.field.removeCard(opponentCard);
 		}
