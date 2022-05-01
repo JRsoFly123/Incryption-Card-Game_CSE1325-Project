@@ -8,7 +8,6 @@ public class Player {
 	private Hand hand;
 	Field field;
 	
-	//thinkge
 	public Player(String name,int health)
 	{
 		this.name=name;
