@@ -5,7 +5,7 @@ import cards.Card;
 
 public class Hand 
 {
-	private ArrayList<UnitCard> cardsInHand; //keeps track of cards the player currently has thinkge
+	private ArrayList<UnitCard> cardsInHand; //keeps track of cards the player currently has
 	private String playersHand;
 	
 	public Hand(Player player)
