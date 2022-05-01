@@ -1,16 +1,20 @@
 package board;
+import cards.Card;
 
 public class Player {
 	
 	private String name;
 	public int health;
-	//hand? don't know if the user should have the whole deck or just have the cards they chose
-	//field this is the area where the user can place the cards
+	private Hand hand;
+	Field field;
 	
+	//thinkge
 	public Player(String name,int health)
 	{
 		this.name=name;
 		this.health=health;
+		hand =new Hand(this);
+		field=new Field(this);
 	}
 	
 	
@@ -35,6 +39,48 @@ public class Player {
 		this.health=health;
 	}
 	
+	public Hand getHand()
+	{
+		return hand;
+	}
+	
+	public Field getField()
+	{
+		return field;
+	}
+	
+	//summon card function? not sure if we'll use this
+	public void summonCard(UnitCard card)
+	{
+		field.setCard(card);
+		hand.removeCardFromHand(card);
+	}
+	
+	//attack opponent's card
+	public void attackCard(UnitCard card, UnitCard opponentCard,Player opponent)
+	{
+		opponentCard.health=opponentCard.health-(card.getAttack());//getPower gets the cards attack
+		
+		if(opponentCard.health==0)
+		{
+			opponent.field.removeCard(opponentCard);
+		}
+	}
+	
+	//attack player directly
+	public void attackOpponent(UnitCard card, Player opponent)
+	{
+		opponent.health=opponent.health-(card.getAttack());//getPower gets the cards attack
+	}
+	
+	//function to know their turn has ended? not sure about this
+	
+	
+	
+	
+
+}
+
 	
 
 	
