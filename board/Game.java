@@ -21,7 +21,7 @@ public class Game {
 	
 	public void setPlayer(Player newPlayer, int health) {
 		this.player = newPlayer;
-		player.lifepoints = lifepoints;
+		player.health = health;
 		
 	}
 	
