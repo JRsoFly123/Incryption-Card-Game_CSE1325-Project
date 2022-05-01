@@ -7,12 +7,12 @@ public class Field
 {
 	
 	private String fieldSide;
-	private ArrayList<Card> cards;
+	private ArrayList<UnitCard> cards;
 	
 	public Field(Player player) 
 	{
-		fieldSide=player.getName();//to check the name of the player
-		cards =new ArrayList<Card>();
+		fieldSide=player.getName();//to check the name of the player ummm thinkge
+		cards =new ArrayList<UnitCard>();
 	}
 	
 	public void setFieldSide(String fieldSide)
@@ -25,13 +25,13 @@ public class Field
 		return fieldSide;
 	}
 	
-	public ArrayList<Card> getCards()
+	public ArrayList<UnitCard> getCards()
 	{
 		return cards;
 	}
 	
 	//size 3 since there are only 3 places to set cards
-	public void setCard(Card card)
+	public void setCard(UnitCard card)
 	{
 		if(cards.size()<3)
 		{
@@ -39,7 +39,7 @@ public class Field
 		}
 	}
 	
-	public void removeCard(Card card)
+	public void removeCard(UnitCard card)
 	{
 		cards.remove(card);
 	}
@@ -48,3 +48,4 @@ public class Field
 	
 
 }
+
