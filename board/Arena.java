@@ -28,6 +28,9 @@ public class Arena {
 		return unitZone;
 	}
 	
+	/**
+	* 6 is the max hand size
+	*/
 	public void setUnit(UnitCard unitCard) {
 		if(unitZone.size() < 6) {
 			unitZone.add(unitCard);
