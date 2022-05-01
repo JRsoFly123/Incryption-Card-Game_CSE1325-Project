@@ -43,9 +43,4 @@ public class Field
 	{
 		cards.remove(card);
 	}
-	
-	
-	
-
 }
-
