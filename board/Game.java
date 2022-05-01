@@ -72,7 +72,7 @@ public class Game {
 	}
 	
 	
-	public void createDeck(String fileName)
+	public void createDeck(Player player, String fileName)
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
 			ArrayList<String[]> lines = new ArrayList<>();
@@ -93,8 +93,8 @@ public class Game {
 		}
 	
 	public void startNewGame() {
-		player = new Player("Player 1",8000);
-		opponent = new Player("Player 2",8000);
+		player = new Player("Player 1",8000); //Player1 will need to be changed to whatever the user enters as their name
+		opponent = new Player("Player 2",8000);// this one as well
 		
 		createDeck(player,"UnitDeck.csv");
 		createDeck(opponent, "UnitDeck.csv");
