@@ -102,10 +102,9 @@ public class Game {
 		player.getDeck().shuffleDeck();
 		opponent.getDeck().shuffleDeck();
 		
-		for(int i =0; i<5; i++) {
-			player.drawCard();
-			opponent.drawCard();
-		}
+		//draw one card and it will be placed on the players hand
+		player.drawCard();
+		opponent.drawCard();
 		
 		currentPlayer = player;
 	}
