@@ -5,17 +5,17 @@ import cards.Card;
 
 public class Hand 
 {
-	private ArrayList<Card> cardsInHand; //keeps track of cards the player currently has
+	private ArrayList<UnitCard> cardsInHand; //keeps track of cards the player currently has thinkge
 	private String playersHand;
 	
 	public Hand(Player player)
 	{
-		cardsInHand=new ArrayList<Card>();
+		cardsInHand=new ArrayList<UnitCard>();
 		playersHand=player.getName();
 	}
 	
 	//still not sure about this
-	public ArrayList<Card> getCardsInHand()
+	public ArrayList<UnitCard> getCardsInHand()
 	{
 		return cardsInHand;
 	}
@@ -35,10 +35,10 @@ public class Hand
 		}
 	}
 	
-	//we also need to remove the card right after since it will be placed
+	//we also need to remove the add right after since it will be placed
 	public void removeCardFromHand(Card card)
 	{
-		for(int i=0;i<cardsInHand.size();i++)//doubt we need this since we know which cards are in the hand
+		for(int i=0;i<cardsInHand.size();i++)
 		{
 			if(cardsInHand.get(i)==card)
 			{
@@ -47,3 +47,4 @@ public class Hand
 		}
 	}
 }
+
