@@ -1,4 +1,4 @@
-package cardgame;
+package board;
 
 public class UnitCard extends Card {
 	
