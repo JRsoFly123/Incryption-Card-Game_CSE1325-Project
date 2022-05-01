@@ -30,10 +30,10 @@ public class Field
 		return cards;
 	}
 	
-	//size 3 since there are only 3 places to set cards
+	//size 2 since there are only 3 places to set cards
 	public void setCard(UnitCard card)
 	{
-		if(cards.size()<3)
+		if(cards.size()<2)
 		{
 			cards.add(card);
 		}
