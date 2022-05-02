@@ -1,7 +1,7 @@
 package board;
 
 import java.util.ArrayList;
-import cards.Card;
+
 
 public class Field 
 {
@@ -44,3 +44,4 @@ public class Field
 		cards.remove(card);
 	}
 }
+
