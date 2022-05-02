@@ -95,7 +95,7 @@ public class Game {
 	}
 	
 	public void startNewGame() {
-		player = new Player("Player 1",8000);
+		player = new Player("Player 1",8000);//PLAYER1/PLAYER2 ARE JUST PLACEHOLDERS BUT THEY WILL HAVE 8000 HEALTH
 		opponent = new Player("Player 2",8000);
 		
 		createDeck("UnitDeck.csv");
