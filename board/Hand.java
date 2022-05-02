@@ -1,7 +1,7 @@
 package board;
 
 import java.util.ArrayList;
-import cards.Card;
+
 
 public class Hand 
 {
@@ -27,7 +27,7 @@ public class Hand
 	}
 	
 	//we can only limit the player to get 2 cards at a time
-	public void addCardtoHand(Card card)
+	public void addCardtoHand(UnitCard card)
 	{
 		if(cardsInHand.size()<2)
 		{
@@ -36,7 +36,7 @@ public class Hand
 	}
 	
 	//we also need to remove the add right after since it will be placed
-	public void removeCardFromHand(Card card)
+	public void removeCardFromHand(UnitCard card)
 	{
 		for(int i=0;i<cardsInHand.size();i++)
 		{
@@ -47,4 +47,3 @@ public class Hand
 		}
 	}
 }
-
