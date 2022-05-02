@@ -15,6 +15,7 @@ public class Field
 		cards =new ArrayList<UnitCard>();
 	}
 	
+	//dont remember why i made this since it was used above. so probably some useless code
 	public void setFieldSide(String fieldSide)
 	{
 		this.fieldSide=fieldSide;
