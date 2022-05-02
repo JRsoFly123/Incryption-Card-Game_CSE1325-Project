@@ -26,7 +26,7 @@ public class Hand
 		return playersHand;
 	}
 	
-	//we can only limit the player to get 2 cards at a time
+	//we can only limit the player to get 1 card at a time
 	public void addCardtoHand(UnitCard card)
 	{
 		if(cardsInHand.size()<2)
@@ -35,7 +35,7 @@ public class Hand
 		}
 	}
 	
-	//we also need to remove the add right after since it will be placed
+	//we also need to remove the card right after since it will be placed on the field
 	public void removeCardFromHand(UnitCard card)
 	{
 		for(int i=0;i<cardsInHand.size();i++)
