@@ -9,6 +9,7 @@ public class UnitCard extends Card {
 	
 	public UnitCard(String name, int attack, int health) {
 		
+		//might have to super the name
 		this.name = name;
 		this.attack = attack;
 		this.health = health;
