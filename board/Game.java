@@ -2,6 +2,7 @@ package board;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Game {
@@ -29,9 +30,9 @@ public class Game {
 		return opponent;
 	}
 	
-	public void setOpponent(Player oppoenent, int health) {
+	public void setOpponent(Player opponent, int health) {
 		this.opponent = opponent;
-		opponenent.health = health;
+		opponent.health = health;
 	}
 	
 	public Player getWinner() {
@@ -72,7 +73,7 @@ public class Game {
 	}
 	
 	
-	public void createDeck(Player player, String fileName)
+	public void createDeck(String fileName) {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
 			ArrayList<String[]> lines = new ArrayList<>();
@@ -91,20 +92,22 @@ public class Game {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
 	
 	public void startNewGame() {
-		player = new Player("Player 1",8000); //Player1 will need to be changed to whatever the user enters as their name
-		opponent = new Player("Player 2",8000);// this one as well
+		player = new Player("Player 1",8000);
+		opponent = new Player("Player 2",8000);
 		
-		createDeck(player,"UnitDeck.csv");
-		createDeck(opponent, "UnitDeck.csv");
+		createDeck("UnitDeck.csv");
+		createDeck("UnitDeck.csv");
 		
 		player.getDeck().shuffleDeck();
 		opponent.getDeck().shuffleDeck();
 		
-		//draw one card and it will be placed on the players hand
-		player.drawCard();
-		opponent.drawCard();
+		for(int i =0; i<5; i++) {
+			player.drawCard();
+			opponent.drawCard();
+		}
 		
 		currentPlayer = player;
 	}
