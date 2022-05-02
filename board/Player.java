@@ -1,12 +1,14 @@
 package board;
-import cards.Card;
+
 
 public class Player {
 	
 	private String name;
 	public int health;
 	private Hand hand;
+	private DeckOfCards deck;
 	Field field;
+	
 	
 	public Player(String name,int health)
 	{
@@ -14,9 +16,10 @@ public class Player {
 		this.health=health;
 		hand =new Hand(this);
 		field=new Field(this);
+		deck =new DeckOfCards();
 	}
 	
-	
+
 	public String getName() 
 	{
 		return name;
@@ -46,6 +49,17 @@ public class Player {
 	public Field getField()
 	{
 		return field;
+	}
+	
+	public DeckOfCards getDeck() {
+		return deck;
+	}
+	
+	public UnitCard drawCard() {
+		UnitCard card = deck.drawOneCard();
+		hand.addCardtoHand(card);
+		return card;
+	
 	}
 	
 	//summon card function? not sure if we'll use this
@@ -80,8 +94,3 @@ public class Player {
 	
 
 }
-
-	
-
-	
-	
