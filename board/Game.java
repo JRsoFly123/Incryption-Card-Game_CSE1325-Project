@@ -87,6 +87,7 @@ public class Game {
 			for(int i=0; i<lines.size(); i++) {
 				UnitCard unitCard = new UnitCard(lines.get(i)[0], Integer.parseInt(lines.get(i)[1]), Integer.parseInt(lines.get(i)[2]));
 				player.getDeck().addCardToDeck(unitCard);
+				opponent.getDeck().addCardToDeck(unitCard); // JEREMIAH EDIT - 5/1/2022 - 11:16PM
 			}
 		}
 		catch(IOException e) {
@@ -98,7 +99,6 @@ public class Game {
 		player = new Player("Player 1",8000);//PLAYER1/PLAYER2 ARE JUST PLACEHOLDERS BUT THEY WILL HAVE 8000 HEALTH
 		opponent = new Player("Player 2",8000);
 		
-		createDeck("UnitDeck.csv");
 		createDeck("UnitDeck.csv");
 		
 		player.getDeck().shuffleDeck();
