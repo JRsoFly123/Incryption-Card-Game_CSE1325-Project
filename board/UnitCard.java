@@ -14,7 +14,16 @@ public class UnitCard extends Card {
 		this.attack = attack;
 		this.health = health;
 		attacked = false;
-		
+	}
+	
+	// EDIT - JEREMIAH - 5/3 - 5:38PM
+	public String getName() {
+		return name;
+	}
+
+	// EDIT - JEREMIAH - 5/3 - 5:38PM
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public int getAttack() {
@@ -33,5 +42,6 @@ public class UnitCard extends Card {
 		this.attacked = attacked;
 	}
 	
-	
+	// EDIT - JEREMIAH - 5/1/2022 - 11:23PM
+	public int getHealth() { return health;}
 }
