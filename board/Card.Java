@@ -4,7 +4,9 @@ import javax.swing.*;
 
 public class Card{
 
-	private String name;
+	// EDIT - JEREMIAH - 5/1/2022 - 11:36PM
+	// Transition of "name" variable into the
+	// "UnitCard" class
 	private String owner;
 	private String location;
 	private ImageIcon image;
