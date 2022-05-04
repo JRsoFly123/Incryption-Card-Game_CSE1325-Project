@@ -106,17 +106,17 @@ class StartMenu
 				
 				JPanel instructionPanel = new JPanel();
 				JTextArea instructions = new JTextArea("Two players take turns placing cards that have health and attack power on a 2x3 grid board. "
-														+ "A player has three options when it is their turn. They can either PLACE the given card on the board, "
-														+ "GET INFO on the card, or REROLL for a new card. "
-						 								+ "Once the card is placed on the board and the player hits END TURN, the card attacks the opponent's card directly above/below. "
-														+ "If there is no card above/below, the player will lose health depending on the card's attack power. "
-														+ "Players keep taking turns placing cards until one player has taken too much damage.");
+								+ "A player has three options when it is their turn. They can either PLACE the given card on the board, "
+								+ "GET INFO on the card, or REROLL for a new card. "
+						 		+ "Once the card is placed on the board and the player hits END TURN, the card attacks the opponent's card directly above/below. "
+								+ "If there is no card above/below, the player will lose health depending on the card's attack power. "
+								+ "Players keep taking turns placing cards until one player has taken too much damage.");
 				instructions.setFont(new Font("Arial", Font.PLAIN, 18));
-		        instructions.setLineWrap(true);
-		        instructions.setWrapStyleWord(true);
-		        instructions.setOpaque(false);
-		        instructions.setEditable(false);
-		        instructions.setPreferredSize(new Dimension(470,225));
+		        	instructions.setLineWrap(true);
+		       	 	instructions.setWrapStyleWord(true);
+		        	instructions.setOpaque(false);
+		        	instructions.setEditable(false);
+		        	instructions.setPreferredSize(new Dimension(470,225));
 				instructionPanel.add(instructions);
 				JOptionPane.showMessageDialog(frame,instructionPanel,"Tutorial",JOptionPane.INFORMATION_MESSAGE);
 			} 
