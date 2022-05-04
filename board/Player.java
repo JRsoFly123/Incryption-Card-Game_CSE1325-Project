@@ -8,6 +8,7 @@ public class Player {
 	private Hand hand;
 	private DeckOfCards deck;
 	private ImageIcon image;
+	private BoardUI board;
 	Field field;
 	
 	
@@ -66,6 +67,16 @@ public class Player {
 	{
 		this.image = image;
 	}	
+	
+	public BoardUI getBoard()
+	{
+		return board;	
+	}
+	
+	public void setBoard(BoardUI board)
+	{
+		this.board = board;	
+	}
 	
 	public UnitCard drawCard() {
 		UnitCard card = deck.drawOneCard();
