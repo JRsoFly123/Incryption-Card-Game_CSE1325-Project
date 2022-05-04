@@ -7,6 +7,7 @@ public class Player {
 	public int health;
 	private Hand hand;
 	private DeckOfCards deck;
+	private ImageIcon image;
 	Field field;
 	
 	
@@ -51,9 +52,20 @@ public class Player {
 		return field;
 	}
 	
-	public DeckOfCards getDeck() {
+	public DeckOfCards getDeck() 
+	{
 		return deck;
 	}
+	
+	public ImageIcon getImage()
+	{
+		return image;
+	}	
+	
+	public void setImage(ImageIcon image)
+	{
+		this.image = image;
+	}	
 	
 	public UnitCard drawCard() {
 		UnitCard card = deck.drawOneCard();
