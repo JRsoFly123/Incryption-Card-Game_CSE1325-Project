@@ -132,4 +132,9 @@ class StartMenu
 		}
 		
 	}
+	
+	public JFrame getJFrame() 
+	{
+		return frame;
+	}
 }
