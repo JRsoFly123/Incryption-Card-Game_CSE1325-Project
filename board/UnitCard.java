@@ -1,47 +1,119 @@
 package board;
+import javax.swing.ImageIcon;
 
-public class UnitCard extends Card {
-	
-	private int health;
-	private int attack;
+public class Player {
+
 	private String name;
-	private boolean attacked;
-	
-	public UnitCard(String name, int attack, int health) {
-		
-		//might have to super the name
-		this.name = name;
-		this.attack = attack;
-		this.health = health;
-		attacked = false;
+	public int health;
+	private Hand hand;
+	private DeckOfCards deck;
+	private ImageIcon image;
+	private BoardUI board;
+	Field field;
+
+
+	public Player(String name,int health)
+	{
+		this.name=name;
+		this.health=health;
+		hand =new Hand(this);
+		field=new Field(this);
+		deck =new DeckOfCards();
 	}
-	
-	// EDIT - JEREMIAH - 5/3 - 5:38PM
-	public String getName() {
+
+
+	public String getName()
+	{
 		return name;
 	}
 
-	// EDIT - JEREMIAH - 5/3 - 5:38PM
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String name)
+	{
+		this.name=name;
 	}
-	
-	public int getAttack() {
-		return attack;
+
+	public int getHealth()
+	{
+		return health;
 	}
-	
-	public void setAttack(int attack) {
-		this.attack = attack;
+
+
+	public void setHealth(int health)
+	{
+		this.health=health;
 	}
-	
-	public boolean getAttacked(){
-		return attacked;
+
+	public Hand getHand()
+	{
+		return hand;
 	}
-	
-	public void setGetAttacked(boolean attacked) {
-		this.attacked = attacked;
+
+	public Field getField()
+	{
+		return field;
 	}
-	
-	// EDIT - JEREMIAH - 5/1/2022 - 11:23PM
-	public int getHealth() { return health;}
+
+	public DeckOfCards getDeck()
+	{
+		return deck;
+	}
+
+	public ImageIcon getImage()
+	{
+		return image;
+	}
+
+	public void setImage(ImageIcon image)
+	{
+		this.image = image;
+	}
+
+	public BoardUI getBoard()
+	{
+		return board;
+	}
+
+	public void setBoard(BoardUI board)
+	{
+		this.board = board;
+	}
+
+	public UnitCard drawCard() {
+		UnitCard card = deck.drawOneCard();
+		hand.addCardtoHand(card);
+		return card;
+
+	}
+
+	//summon card function? not sure if we'll use this
+	public void summonCard(UnitCard card)
+	{
+		field.setCard(card);
+		hand.removeCardFromHand(card);
+	}
+
+	//attack opponent's card
+	public void attackCard(UnitCard card, UnitCard opponentCard,Player opponent)
+	{
+		opponentCard.setHealth(opponentCard.getHealth()-(card.getAttack()));//getPower gets the cards attack
+
+		//will be taken off the field if health is 0 or lower
+		if(opponentCard.getHealth()<=0)
+		{
+			opponent.field.removeCard(opponentCard);
+		}
+	}
+
+	//attack player directly
+	public void attackOpponent(UnitCard card, Player opponent)
+	{
+		opponent.health=opponent.health-(card.getAttack());//getPower gets the cards attack
+	}
+
+	//function to know their turn has ended? not sure about this
+
+
+
+
+
 }
