@@ -7,8 +7,7 @@ public class CardGameMain {
         // That mean we need to start the game from the start menu...
 
         // Starting the game here
-        Game currentGame = new Game();
-        currentGame.startNewGame("player 1", "player 2", "UnitDeck.csv");
+        StartMenu start = new StartMenu();
 
     }
 }
