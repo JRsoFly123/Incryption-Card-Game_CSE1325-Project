@@ -129,28 +129,39 @@ public class BoardUI extends JPanel implements ActionListener {
         }
 
         int maxStartingCards = startingCards.length;
-        for (int i = 0; i < maxStartingCards; i++) {
+        for (int i = 0; i < maxStartingCards; i++)
+        {
             String result = (String) JOptionPane.showInputDialog(null, "Which cards do you want(" + player.getName() + ")?", "Start Hands(" + player.getName() + ")"
                     , JOptionPane.QUESTION_MESSAGE, player.getImage(), startingCards, startingCards[0]);
             System.out.println("[DEBUG] RESULT STARTING DIALOG FOR CARDS: " + result);
             int handMaxSize = player.getHand().getCardsInHand().size();
-            for (int k = 0; k < handMaxSize; k++) {
-                if (result == player.getHand().getCardsInHand().get(k).getName()) {
+            for (int k = 0; k < handMaxSize; k++)
+            {
+                if (result == player.getHand().getCardsInHand().get(k).getName())
+                {
                     int cardSlot = (int) JOptionPane.showInputDialog(null, "Which slot do you want to place the card?", "Card Placement",
                             JOptionPane.QUESTION_MESSAGE, player.getImage(), cardGrid, cardGrid[0]);
                     System.out.println("[DEBUG] cardSlot Dialog for Cards: " + cardSlot);
                     // Getting rid of the slot option for next input...
-                    for (int j = 0; j < cardGrid.length; j++) {
-                        if (cardSlot == (int) cardGrid[j]) {
+                    cardGrid[cardSlot - 1] = null;
+                    for(int g = cardSlot - 1; g < cardGrid.length-1;g++)
+                    {
+                        cardGrid[g] = cardGrid[g+1];
+                    }
+                   /* for (int j = 0; j < cardGrid.length; j++)
+                    {
+                        if (cardSlot == (int) cardGrid[j])
+                        {
                             cardGrid[j] = null;
                             int currentj = j;
-                            for (j = currentj; j < cardGrid.length - 1; j++) {
+                            for (j = currentj; j < cardGrid.length - 1; j++)
+                            {
                                 cardGrid[j] = cardGrid[j + 1];
                             }
                             cardGrid[cardGrid.length - 1] = null;
                             break;
                         }
-                    }
+                    }*/
                     // cardSlot 1 is input:
                     // 0 - 1 - 2
                     // 3 - 4 - 5
@@ -158,11 +169,12 @@ public class BoardUI extends JPanel implements ActionListener {
                     cards.get(cardSlot - 1).setIcon(player.getHand().getCardsInHand().get(k).getImage());
                     cards.get(cardSlot - 1).setToolTipText("HEALTH: " + player.getHand().getCardsInHand().get(k).getHealth() + "\n"
                             + "ATTACK: " + player.getHand().getCardsInHand().get(k).getAttack());
+                    cards.get(cardSlot - 1).setName(player.getHand().getCardsInHand().get(k).getName());
                     player.getHand().getCardsInHand().get(k).setGridlocation(cardSlot);
                     player.summonCard(player.getHand().getCardsInHand().get(k));
                     System.out.println("[DEBUG] k: " + k);
                     System.out.println("[DEBUG] StartingCards: " + startingCards[k]);
-                    if (result == startingCards[i]) {
+                    /*if (result == startingCards[i]) {
                         if (startingCards[i + 1] != "\0") {
                             startingCards[i] = startingCards[i + 1];
                             startingCards[i + 1] = "\0";
@@ -170,7 +182,22 @@ public class BoardUI extends JPanel implements ActionListener {
                             startingCards[i] = "\0";
                         }
                         break;
+                    } */
+
+                    for (int g = 0; g < startingCards.length; g++)
+                    {
+                        if(startingCards[g] == result)
+                        {
+                            startingCards[g] = null;
+                            for(int v = g; v < startingCards.length-1;v++)
+                            {
+                                startingCards[g] = startingCards[g+1];
+                            }
+                                break;
+                        }
                     }
+
+                    break;
                 }
             }
         }
@@ -210,7 +237,8 @@ public class BoardUI extends JPanel implements ActionListener {
                     System.out.println("[DEBUG] ENDTURN || Opponent name: " + player.getOpponent().getBoard().getName());
                     System.out.println("[DEBUG] ENDTURN || player name: " + player.getBoard().getName());
                     int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to end your turn?");
-                    switch (result) {
+                    switch (result)
+                    {
                         case JOptionPane.YES_OPTION:
                             System.out.println("[Confirm End Turn] Yes pressed");
                             for (int f = 0; f < player.getField().getCards().size(); f++) {
@@ -242,16 +270,18 @@ public class BoardUI extends JPanel implements ActionListener {
         for (int i = 0; i < cards.size(); i++) {
             if (button == cards.get(i))
             {
+                System.out.println("[DEBUG] Card Button name: "+cards.get(i).getName());
                 if (cards.get(i).getIcon() != null)
                 {
                     // Need to get object array of showInputDialog for which card to use on opponent
-                    Object listOfFieldCards[] = new Object[player.getField().getCards().size()];
+                    /*Object listOfFieldCards[] = new Object[player.getField().getCards().size()];
                     for (int k = 0; k < player.getField().getCards().size(); k++)
                     {
                         listOfFieldCards[k] = player.getField().getCards().get(k).getName();
-                    }
+                    }*/
                     ////////////////////////////////////////////////////////////////////////////////
-                    for (int v = 0; v < player.getField().getCards().size(); v++) {
+                    for (int v = 0; v < player.getField().getCards().size(); v++)
+                    {
 
                         if ((cards.get(i).getIcon() == player.getField().getCards().get(v).getImage()) && (player.getField().getCards().get(v).getAttacked())) {
                             // If a card already have attacked
@@ -260,20 +290,23 @@ public class BoardUI extends JPanel implements ActionListener {
                             return;
                         }
                     }
-                    if (player.getOpponent().getField().getCards().size() == 0) {
-
+                    if (player.getOpponent().getField().getCards().size() == 0)
+                    {
+                        // Attacking Opponent not cards
                         // Getting which card to use
-                        String attackCardStr = (String) JOptionPane.showInputDialog(null, "Opportunity! Your opponent is wide open.\nWhich card do you want to us to attack the opponent?", "Card Selection (" + player.getName() + ")",
-                                JOptionPane.QUESTION_MESSAGE, player.getImage(), listOfFieldCards, listOfFieldCards[0]);
-
-                        UnitCard attackCard;
+                       /* String attackCardStr = (String) JOptionPane.showInputDialog(null, "Opportunity! Your opponent is wide open.\nWhich card do you want to us to attack the opponent?", "Card Selection (" + player.getName() + ")",
+                                JOptionPane.QUESTION_MESSAGE, player.getImage(), listOfFieldCards, listOfFieldCards[0]);*/
                         // Need to decipher the name and card...
-                        attackCard = strToPlayerUnitCard(player, attackCardStr);
+                        JOptionPane.showMessageDialog(null,"Your "+cards.get(i).getName()+
+                                " had just attacked "+player.getOpponent().getName()+"!");
+                        UnitCard attackCard;
+                        attackCard = strToPlayerUnitCard(player, cards.get(i).getName());
                         player.attackOpponent(attackCard, player.getOpponent());
 
                         description.setText("Attacked " + player.getOpponent().getName() + " with "
                                 + attackCard.getAttack() + " attack power.\n" + player.getOpponent().getName() + "'s health: " + player.getOpponent().getHealth());
-                        if (player.gameOver) {
+                        if (player.gameOver)
+                        {
                             System.out.println("Winner is: " + player.getName());
                             System.out.println("~~~~~~ GAME OVER ~~~~~~");
                             System.exit(0);
@@ -283,30 +316,45 @@ public class BoardUI extends JPanel implements ActionListener {
                         player.getOpponent().getBoard().playerIcon.setToolTipText(player.getOpponent().getName() + " || HEALTH: " + player.getOpponent().getHealth());
 
                         // This Card have attacked now, set true until end of turn
-                        for (int v = 0; v < player.getField().getCards().size(); v++) {
-                            if (cards.get(i).getIcon() == player.getField().getCards().get(v).getImage()) {
+                        for (int v = 0; v < player.getField().getCards().size(); v++)
+                        {
+                            if (cards.get(i).getIcon() == player.getField().getCards().get(v).getImage())
+                            {
                                 player.getField().getCards().get(v).setGetAttacked(true);
                             }
                         }
-                    } else {
+                    }
+                    else
+                    {
                         // Attack Opponent cards!
                         Object listOfOPPCards[] = new Object[player.getOpponent().getField().getCards().size()];
                         for (int k = 0; k < player.getOpponent().getField().getCards().size(); k++) {
                             listOfOPPCards[k] = player.getOpponent().getField().getCards().get(k).getName();
                         }
                         //////////////////
-                        String attackCardStr = (String) JOptionPane.showInputDialog(null, "More troops on opponent side!\nWhich card do you want to attack the opponent?", "Card Selection (" + player.getName() + ")",
-                                JOptionPane.QUESTION_MESSAGE, player.getImage(), listOfFieldCards, listOfFieldCards[0]);
+                        /*String attackCardStr = (String) JOptionPane.showInputDialog(null, "More troops on opponent side!\nWhich card do you want to attack the opponent?", "Card Selection (" + player.getName() + ")",
+                                JOptionPane.QUESTION_MESSAGE, player.getImage(), listOfFieldCards, listOfFieldCards[0]); */
+                        description.setText("Attacking with "+cards.get(i).getName());
                         String victimCardStr = (String) JOptionPane.showInputDialog(null, "Which of the opponent's card do you want to to attack?", "Card Selection (" + player.getName() + ")",
                                 JOptionPane.QUESTION_MESSAGE, player.getImage(), listOfOPPCards, listOfOPPCards[0]);
 
-                        UnitCard attackCard = strToPlayerUnitCard(player, attackCardStr);
+                        UnitCard attackCard = strToPlayerUnitCard(player, cards.get(i).getName());
                         UnitCard victimCard = strToPlayerUnitCard(player.getOpponent(), victimCardStr);
+                        int fieldCardSize_preAttack = player.getOpponent().getField().getCards().size();
 
                         player.attackCard(attackCard, victimCard, player.getOpponent());
-                        description.setToolTipText(player.getName() + " attacked " + player.getOpponent().getName() +
+                        // Setting BOOLEAN ATTACK TRUE
+                        for (int v = 0; v < player.getField().getCards().size(); v++)
+                        {
+                            if (cards.get(i).getIcon() == player.getField().getCards().get(v).getImage())
+                            {
+                                player.getField().getCards().get(v).setGetAttacked(true);
+                            }
+                        }
+                        description.setText(player.getName() + " attacked " + player.getOpponent().getName() +
                                 "'s" + victimCard.getName() + ". " + victimCard.getName() + "Health: " + victimCard.getHealth());
 
+                        // Now we need the index of button card and cards from field
                         int buttonOpponentIndex = 0;
                         for (int w = 0; w < player.getOpponent().getBoard().cards.size(); w++) {
                             if (victimCard.getImage() == player.getOpponent().getBoard().cards.get(w).getIcon()) {
@@ -317,19 +365,21 @@ public class BoardUI extends JPanel implements ActionListener {
                             }
                         }
                         int cardOpponentIndex = 0;
-                        for (int w = 0; w < player.getOpponent().getField().getCards().size(); w++) {
-                            if (victimCard.getImage() == player.getOpponent().getField().getCards().get(w).getImage()) {
+                        for (int w = 0; w < player.getOpponent().getField().getCards().size(); w++)
+                        {
+                            if (victimCard.getName() == player.getOpponent().getField().getCards().get(w).getName())
+                            {
                                 cardOpponentIndex = w;
                                 player.getOpponent().getField().getCards().set(w, victimCard);
                             }
                         }
 
                         // When the card dies it needs to remove icon
-                        if (player.getOpponent().getField().getCards().get(cardOpponentIndex).getHealth() <= 0) {
-                            player.getOpponent().getField().removeCard(player.getField().getCards().get(cardOpponentIndex));
+                        if (player.getOpponent().getField().getCards().size() < fieldCardSize_preAttack)
+                        {
                             player.getOpponent().getBoard().cards.get(buttonOpponentIndex).setIcon(null);
-                            player.getOpponent().getBoard().cardGrid[player.getOpponent().getField().getCards().get(cardOpponentIndex).getGridlocation() - 1] =
-                                    player.getOpponent().getField().getCards().get(cardOpponentIndex).getGridlocation();
+                            player.getOpponent().getBoard().cardGrid[victimCard.getGridlocation()-1] = victimCard.getGridlocation();
+
                         }
                     }
                 } else {
@@ -347,7 +397,9 @@ public class BoardUI extends JPanel implements ActionListener {
                 } else if ((player.getField().getCards().size() == 2)) {
                     description.setText("Can't we have too many cards in the field!");
                 }
-            } else {
+            }
+            else
+            {
                 UnitCard activeHand = player.getHand().getCardsInHand().get(0);
                 int cardSlot = (int) JOptionPane.showInputDialog(null, "Which slot do you want to place the card?", "Card Placement",
                         JOptionPane.QUESTION_MESSAGE, player.getImage(), cardGrid, cardGrid[0]);
@@ -387,3 +439,4 @@ public class BoardUI extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 }
+
