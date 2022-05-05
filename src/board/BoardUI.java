@@ -257,11 +257,14 @@ public class BoardUI extends JPanel implements ActionListener {
                             break;
                     }
                 } else if (button == reRoll) {
-                    if (player.getHand().getCardsInHand().size() < 1) {
+                    if (player.getHand().getCardsInHand().size() < 1)
+                    {
                         UnitCard card = player.getDeck().drawOneCard();
                         player.getHand().addCardtoHand(card);
                         cardInHand.setIcon(card.getImage());
-                    } else {
+                    }
+                    else
+                    {
                         JOptionPane.showMessageDialog(null, "Can't add you already have a card in your hand!");
                     }
                 }
@@ -320,15 +323,17 @@ public class BoardUI extends JPanel implements ActionListener {
                         {
                             if (cards.get(i).getIcon() == player.getField().getCards().get(v).getImage())
                             {
+
                                 player.getField().getCards().get(v).setGetAttacked(true);
                             }
                         }
                     }
-                    else
+                    else if(player.getOpponent().getField().getCards().size() != 0)
                     {
                         // Attack Opponent cards!
                         Object listOfOPPCards[] = new Object[player.getOpponent().getField().getCards().size()];
-                        for (int k = 0; k < player.getOpponent().getField().getCards().size(); k++) {
+                        for (int k = 0; k < player.getOpponent().getField().getCards().size(); k++)
+                        {
                             listOfOPPCards[k] = player.getOpponent().getField().getCards().get(k).getName();
                         }
                         //////////////////
@@ -352,14 +357,14 @@ public class BoardUI extends JPanel implements ActionListener {
                             }
                         }
                         description.setText(player.getName() + " attacked " + player.getOpponent().getName() +
-                                "'s" + victimCard.getName() + ". " + victimCard.getName() + "Health: " + victimCard.getHealth());
+                                "'s" + victimCard.getName() + ". " + victimCard.getName() + "'s Health: " + victimCard.getHealth());
 
                         // Now we need the index of button card and cards from field
                         int buttonOpponentIndex = 0;
                         for (int w = 0; w < player.getOpponent().getBoard().cards.size(); w++) {
                             if (victimCard.getImage() == player.getOpponent().getBoard().cards.get(w).getIcon()) {
                                 buttonOpponentIndex = w;
-                                player.getOpponent().getBoard().cards.get(w).setToolTipText("HEALTH: " + victimCard.getHealth() + "\n"
+                                player.getOpponent().getBoard().cards.get(w).setToolTipText("HEALTH: " + victimCard.getHealth() + " || "
                                         + " ATTACK: " + victimCard.getAttack());
                                 break;
                             }
@@ -378,11 +383,14 @@ public class BoardUI extends JPanel implements ActionListener {
                         if (player.getOpponent().getField().getCards().size() < fieldCardSize_preAttack)
                         {
                             player.getOpponent().getBoard().cards.get(buttonOpponentIndex).setIcon(null);
+                            player.getOpponent().getBoard().cards.get(buttonOpponentIndex).setToolTipText("");
                             player.getOpponent().getBoard().cardGrid[victimCard.getGridlocation()-1] = victimCard.getGridlocation();
 
                         }
                     }
-                } else {
+                }
+                else
+                {
                     System.out.println("Invalid card, please pick a card with an icon!");
                     description.setText("Invalid card, please pick a card with an icon!");
                 }
@@ -390,11 +398,15 @@ public class BoardUI extends JPanel implements ActionListener {
         }
         if (button == cardInHand) {
             // If the player has no card OR field have two cards already
-            if ((player.getHand().getCardsInHand().size() == 0) || (player.getField().getCards().size() == 2)) {
+            if ((player.getHand().getCardsInHand().size() == 0) || (player.getField().getCards().size() == 2))
+            {
                 //Dialog.Can't place card!
-                if ((player.getHand().getCardsInHand().size() == 0)) {
+                if ((player.getHand().getCardsInHand().size() == 0))
+                {
                     description.setText("Can't we have no card in Hand!");
-                } else if ((player.getField().getCards().size() == 2)) {
+                }
+                else if ((player.getField().getCards().size() == 2))
+                {
                     description.setText("Can't we have too many cards in the field!");
                 }
             }
