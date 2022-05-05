@@ -259,6 +259,7 @@ public class BoardUI extends JPanel implements ActionListener {
                             for (int f = 0; f < player.getField().getCards().size(); f++) {
                                 player.getField().getCards().get(f).setGetAttacked(false);
                             }
+                            player.getOpponent().getBoard().playerIcon.setIcon(player.getOpponent().getBoard().player.getImage());
                             cardLayout.show(mainPanel, player.getOpponent().getBoard().getName());
                             break;
                         case JOptionPane.NO_OPTION:
