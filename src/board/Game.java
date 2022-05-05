@@ -105,7 +105,7 @@ public class Game {
 	// JEREMIAH EDIT - 5/1/2022 - 11:16
 	// This edit is to change the function for the new
 	// change of two players and various files of decks. This change is evident by every *.
-	public void startNewGame(String player1_name, String player2_name, String filename) { // *
+	public void startNewGame(String player1_name, String player2_name, String filename,JFrame frame) { // *
 		player = new Player(player1_name,8000,"Wizard");    // *
 		opponent = new Player(player2_name,8000,"Ninja");  // *
 		player.setOpponent(opponent);
@@ -117,7 +117,8 @@ public class Game {
 		opponent.getDeck().shuffleDeck();
 
 		// Drawing and setting cards down
-		for(int i =0; i<2; i++) {
+		for(int i =0; i<2; i++)
+		{
 			player.drawCard();
 			UnitCard cardPlay = player.getHand().getCardsInHand().get(i);
 			player.field.setCard(cardPlay);
@@ -128,8 +129,6 @@ public class Game {
 		currentPlayer = player;
 
 		// Create and set up the window
-		JFrame frame = new JFrame("CARD-GAME-TEST");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		CardLayout cardLayout = new CardLayout();
 		JPanel mainPanel = new JPanel(cardLayout);
 		player.setBoard(new BoardUI(player, mainPanel, cardLayout, player.getIconName()));
@@ -148,3 +147,4 @@ public class Game {
 	
 	
 }
+
